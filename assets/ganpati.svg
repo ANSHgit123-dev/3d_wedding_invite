@@ -14,6 +14,7 @@
     </linearGradient>
   </defs>
 
+  <g transform="translate(200, 0) scale(-1, 1)">
   <!-- ================= CROWN (MUKUT) ================= -->
   <!-- Top Finial / Kalash -->
   <path d="M100 12 C98 16 96 22 100 28 C104 22 102 16 100 12 Z" fill="url(#goldFill)" stroke-width="1.2"/>
@@ -131,4 +132,5 @@
   <path d="M48 230 H152" stroke-width="1.2" opacity="0.6"/>
   <circle cx="46" cy="230" r="1.5" fill="url(#goldGrad)" stroke="none"/>
   <circle cx="154" cy="230" r="1.5" fill="url(#goldGrad)" stroke="none"/>
+  </g>
 </svg>
