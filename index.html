@@ -1322,9 +1322,28 @@ body.lang-ml .closing-fam-line {
 .footer-end {
   position: relative; z-index: 5; text-align: center;
   padding: 24px 20px calc(88px + env(safe-area-inset-bottom));
-  font-family: var(--font-roman); font-size: 8.5px; letter-spacing: .30em;
-  text-transform: uppercase; color: var(--cream-45); text-indent: .30em;
-  line-height: 2.2;
+  font-family: var(--font-roman);
+  font-size: clamp(11.5px, 3.2vw, 12px);
+  letter-spacing: .22em;
+  text-indent: .22em;
+  line-height: 2;
+}
+.footer-hashtag {
+  color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  text-transform: none;
+}
+.hashtag-heart {
+  color: inherit;
+  font-family: "Apple Symbols", "Segoe UI Symbol", "Noto Sans Symbols", sans-serif;
+  font-style: normal;
+  font-variant-emoji: text;
+  margin-left: 0.35em;
+  display: inline-block;
+  line-height: 1;
 }
 
 /* ============ FLOATING CONTROLS ============ */
@@ -1860,7 +1879,7 @@ body.lang-ml .closing-fam-line {
     </div>
 
     <footer class="footer-end">
-      <span style="color:var(--gold);">#AayushiWedsVaishakh</span>
+      <span class="footer-hashtag">#VaayuKiShaadi <span class="hashtag-heart" aria-hidden="true">&#x2665;&#xFE0E;</span></span>
     </footer>
   </section>
 
