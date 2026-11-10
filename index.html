@@ -1886,6 +1886,9 @@ body.lang-ml .closing-fam-line {
 
 </main>
 
+<!-- ============ BACKGROUND AUDIO ============ -->
+<audio id="bgMusic" preload="auto" playsinline src="assets/background-music.mp3" style="display:none;"></audio>
+
 <!-- ============ FLOATING CONTROLS (MUSIC & LANGUAGE) ============ -->
 <div class="controls" id="controls">
   <button class="ctrl-pill ctrl-btn muted" id="musicToggle" type="button" aria-label="Toggle music">
@@ -1951,7 +1954,7 @@ const CONFIG = {
   cityShort: "Pune",
   mapsLink: "https://maps.google.com/?q=Krushnai+Resort+by+Brahma+Donaje+Pune",
   whatsapp: "919876543210",
-  musicUrl: "",
+  musicUrl: "assets/background-music.mp3",
   
   // Events Timeline — exactly 4 chronological events (single source of truth)
   events: [
@@ -2421,24 +2424,98 @@ $$(".lang-switch button").forEach(b => b.addEventListener("click", () => setLang
 applyLang("en");
 
 /* ================= MUSIC ================= */
+// Playback Trimming Configuration
+const START_TIME = 0;
+const END_TIME = 21.5;
+
 let audioEl = null, audioCtx = null, masterGain = null, musicOn = false, musicStarted = false;
-if (CONFIG.musicUrl){
-  audioEl = new Audio(CONFIG.musicUrl); audioEl.loop = true; audioEl.volume = 0;
+
+function stopAudioAtEnd() {
+  if (audioEl) {
+    audioEl.pause();
+    audioEl.currentTime = END_TIME;
+  }
+  musicOn = false;
+  updateMusicBtn();
 }
 
-function startMusic(){
-  if (musicStarted){ toggleMusic(true); return; }
-  musicStarted = true; musicOn = true; updateMusicBtn();
-  if (audioEl){
-    audioEl.play().catch(()=>{});
-    const t0 = performance.now();
-    (function fade(){
-      const p = Math.min(1, (performance.now() - t0) / 2000);
-      audioEl.volume = p * 0.55;
-      if (p < 1) requestAnimationFrame(fade);
-    })();
+function checkPlaybackBounds() {
+  if (audioEl && !audioEl.paused) {
+    if (audioEl.currentTime >= END_TIME) {
+      stopAudioAtEnd();
+      return;
+    }
+    requestAnimationFrame(checkPlaybackBounds);
+  }
+}
+
+if (CONFIG.musicUrl) {
+  audioEl = document.getElementById("bgMusic") || new Audio(CONFIG.musicUrl);
+  audioEl.preload = "auto";
+  audioEl.loop = false; // Strictly do not loop
+  audioEl.volume = 0;
+
+  // Set start position once metadata loads
+  audioEl.addEventListener("loadedmetadata", () => {
+    if (audioEl.currentTime < START_TIME) {
+      audioEl.currentTime = START_TIME;
+    }
+  });
+
+  // timeupdate event enforces playback boundary across all browsers (including backgrounded tabs)
+  audioEl.addEventListener("timeupdate", () => {
+    if (audioEl.currentTime >= END_TIME) {
+      stopAudioAtEnd();
+    }
+  });
+
+  // Handle natural end or seeking
+  audioEl.addEventListener("ended", () => {
+    stopAudioAtEnd();
+  });
+
+  // Graceful error logging
+  audioEl.addEventListener("error", (e) => {
+    console.warn("Background audio encountered an error:", e);
+  });
+}
+
+function startMusic() {
+  if (musicStarted) {
+    // If music already started, ensure we don't unexpectedly restart from 0
+    if (!musicOn && audioEl && audioEl.currentTime < END_TIME) {
+      toggleMusic(true);
+    }
     return;
   }
+  musicStarted = true;
+  musicOn = true;
+  updateMusicBtn();
+
+  if (audioEl) {
+    if (audioEl.currentTime >= END_TIME || audioEl.currentTime < START_TIME) {
+      audioEl.currentTime = START_TIME;
+    }
+    const playPromise = audioEl.play();
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        requestAnimationFrame(checkPlaybackBounds);
+        const t0 = performance.now();
+        (function fade() {
+          if (!musicOn) return;
+          const p = Math.min(1, (performance.now() - t0) / 1500);
+          audioEl.volume = p * 0.6;
+          if (p < 1) requestAnimationFrame(fade);
+        })();
+      }).catch((err) => {
+        console.warn("Autoplay deferred until user interaction:", err);
+        musicOn = false;
+        updateMusicBtn();
+      });
+    }
+    return;
+  }
+
   try {
     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     masterGain = audioCtx.createGain(); masterGain.gain.value = 0;
@@ -2458,18 +2535,48 @@ function startMusic(){
   } catch(e){}
 }
 
-function toggleMusic(forceOn){
-  musicOn = (typeof forceOn === "boolean") ? forceOn : !musicOn;
-  if (!musicStarted && musicOn){ startMusic(); return; }
-  if (audioEl){ musicOn ? audioEl.play().catch(()=>{}) : audioEl.pause(); }
-  if (audioCtx && masterGain){
+function toggleMusic(forceOn) {
+  const targetState = (typeof forceOn === "boolean") ? forceOn : !musicOn;
+  if (!musicStarted && targetState) {
+    startMusic();
+    return;
+  }
+  musicOn = targetState;
+
+  if (audioEl) {
+    if (musicOn) {
+      // If toggled on after reaching END_TIME, replay from START_TIME
+      if (audioEl.currentTime >= END_TIME) {
+        audioEl.currentTime = START_TIME;
+        audioEl.volume = 0.6;
+      }
+      const playPromise = audioEl.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          requestAnimationFrame(checkPlaybackBounds);
+        }).catch((err) => {
+          console.warn("Audio playback error:", err);
+          musicOn = false;
+          updateMusicBtn();
+        });
+      }
+    } else {
+      audioEl.pause();
+    }
+  }
+
+  if (audioCtx && masterGain) {
     audioCtx.resume();
     masterGain.gain.cancelScheduledValues(audioCtx.currentTime);
     masterGain.gain.linearRampToValueAtTime(musicOn ? .14 : 0, audioCtx.currentTime + .8);
   }
   updateMusicBtn();
 }
-function updateMusicBtn(){ $("#musicToggle").classList.toggle("muted", !musicOn); }
+
+function updateMusicBtn() {
+  const btn = $("#musicToggle");
+  if (btn) btn.classList.toggle("muted", !musicOn);
+}
 $("#musicToggle").addEventListener("click", () => toggleMusic());
 
 /* ================= SCENE 1 — ENVELOPE ================= */
