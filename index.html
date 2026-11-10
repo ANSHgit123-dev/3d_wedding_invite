@@ -387,6 +387,7 @@ a { color:inherit; text-decoration:none; }
   transform-style: preserve-3d; will-change: transform;
   cursor: pointer;
   touch-action: manipulation;
+  box-shadow: 0 16px 42px rgba(15, 0, 0, .45);
 }
 .env-shadow {
   position: absolute; left: 6%; right: 6%; bottom: -24px; height: 34px;
@@ -394,13 +395,13 @@ a { color:inherit; text-decoration:none; }
 }
 .env-back {
   position: absolute; inset: 0;
-  background: radial-gradient(circle at 50% 50%, #520000 0%, #380000 100%);
-  border: 1px solid var(--gold-45); z-index: 1;
-  box-shadow: inset 0 0 30px rgba(15, 0, 0, .6);
+  background: radial-gradient(circle at 50% 50%, #FAF5EC 0%, #EDE4D3 100%);
+  border: 1px solid var(--gold-antique-45); z-index: 1;
+  box-shadow: inset 0 0 35px rgba(120, 95, 60, .22);
 }
 .env-back::after {
   content: ""; position: absolute; inset: 4px;
-  border: 1px solid var(--gold-24);
+  border: 1px solid var(--gold-antique-25);
 }
 .env-card {
   position: absolute; left: 4%; right: 4%; top: 4%; bottom: 4%; z-index: 2;
@@ -434,15 +435,15 @@ a { color:inherit; text-decoration:none; }
 }
 .env-pocket {
   position: absolute; inset: 0; z-index: 3; pointer-events: none;
-  background: linear-gradient(160deg, #620000 0%, #4A0000 52%, #380000 100%);
+  background: linear-gradient(170deg, #FBF6EE 0%, #F5EDE0 48%, #EBE0CE 100%);
   clip-path: polygon(0 32%, 50% 64%, 100% 32%, 100% 100%, 0 100%);
-  filter: drop-shadow(0 -2px 1px var(--gold-45));
+  filter: drop-shadow(0 -2px 3px rgba(80, 50, 20, .2)) drop-shadow(0 -1px 0 var(--gold-antique-45));
 }
 .env-pocket-line {
   position: absolute; inset: 0; z-index: 3; pointer-events: none;
-  background: linear-gradient(to bottom right, transparent 49.6%, var(--gold-45) 50%, transparent 50.6%),
-              linear-gradient(to bottom left, transparent 49.6%, var(--gold-45) 50%, transparent 50.6%);
-  opacity: .75;
+  background: linear-gradient(to bottom right, transparent 49.3%, rgba(168, 116, 31, .38) 49.8%, rgba(255, 255, 255, .75) 50.2%, transparent 50.7%),
+              linear-gradient(to bottom left, transparent 49.3%, rgba(168, 116, 31, .38) 49.8%, rgba(255, 255, 255, .75) 50.2%, transparent 50.7%);
+  opacity: .85;
 }
 .env-flap-wrap {
   position: absolute; left: 0; right: 0; top: 0; height: 58%;
@@ -452,58 +453,60 @@ a { color:inherit; text-decoration:none; }
 .env-flap {
   position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden;
   clip-path: polygon(0 0, 100% 0, 50% 100%);
-  background: linear-gradient(180deg, #6C0000 0%, #4D0000 60%, #3B0000 100%);
-  filter: drop-shadow(0 2px 4px rgba(10, 0, 0, .5));
+  background: linear-gradient(180deg, #FAF4E9 0%, #F5EDE0 60%, #EDE0CE 100%);
+  filter: drop-shadow(0 5px 12px rgba(50, 20, 10, .3)) drop-shadow(0 1px 0 var(--gold-antique-45));
 }
 .env-flap::after {
   content: ""; position: absolute; inset: 0;
   clip-path: polygon(0 0, 100% 0, 50% 100%);
-  background: linear-gradient(115deg, transparent 47%, var(--gold-70) 50%, transparent 53%);
-  opacity: .45;
+  background: linear-gradient(115deg, transparent 47%, rgba(212, 175, 55, .45) 50%, transparent 53%);
+  opacity: .5;
 }
 .env-flap-back {
   position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden;
   clip-path: polygon(0 0, 100% 0, 50% 100%);
-  background: radial-gradient(circle at 50% 50%, #440000 0%, #2A0000 100%);
+  background: radial-gradient(circle at 50% 40%, #FAF3E7 0%, #E8DDC6 100%);
   transform: rotateX(180deg);
-  box-shadow: inset 0 0 0 1px var(--gold-45);
+  box-shadow: inset 0 0 22px rgba(100, 75, 40, .2), inset 0 0 0 1px var(--gold-antique-45);
 }
 
-/* Wax Seal with Gold Lord Ganesha */
+/* Royal Crimson Wax Seal with Intertwined Gold Monogram */
 .wax-seal {
   position: absolute; left: 50%; top: 58%; translate: -50% -50%;
   z-index: 30; width: 78px; height: 78px; border-radius: 50%;
   cursor: pointer;
-  background: radial-gradient(circle at 35% 30%, #F6E3A1 0%, #E0B44F 35%, #C58F2C 65%, #8F6218 100%);
-  box-shadow: 0 8px 24px rgba(10, 0, 0, .6),
-              inset 0 2px 3px rgba(255, 245, 215, .8),
-              inset 0 -3px 8px rgba(50, 20, 0, .45);
+  background: radial-gradient(circle at 34% 32%, #7A141D 0%, #580B12 45%, #3D050A 80%, #240205 100%);
+  border: 2px solid rgba(212, 175, 55, 0.55);
+  box-shadow: 0 10px 28px rgba(10, 0, 0, .75),
+              inset 0 2px 4px rgba(255, 200, 200, .2),
+              inset 0 -4px 8px rgba(0, 0, 0, .7);
   display: flex; align-items: center; justify-content: center;
   animation: sealPulse 3.5s ease-in-out infinite alternate;
   will-change: transform, opacity; touch-action: manipulation;
   outline: none;
 }
-.wax-seal:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 8px 24px rgba(10, 0, 0, .6); }
-.wax-seal:active { filter: brightness(1.08); }
+.wax-seal:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 10px 28px rgba(10, 0, 0, .75); }
+.wax-seal:active { filter: brightness(1.12); transform: translate(-50%, -50%) scale(0.97); }
 .wax-seal::before {
   content: ""; position: absolute; inset: 6px; border-radius: 50%;
-  border: 1px solid rgba(255, 245, 215, .6);
-  box-shadow: inset 0 1px 3px rgba(60, 25, 0, .4);
+  border: 1px dashed rgba(212, 175, 55, 0.4);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, .65), 0 1px 2px rgba(255, 200, 200, .12);
 }
-.wax-seal .seal-mono {
-  font-family: var(--font-names, var(--font-script));
-  font-size: 28px;
-  color: #4A1005;
-  text-shadow: 0 1px 1px rgba(255, 245, 215, .65), 0 -1px 0 rgba(40, 10, 0, .5);
-  display: flex; align-items: center; justify-content: center;
-  gap: 2px; pointer-events: none; line-height: 1;
-}
-.wax-seal .seal-mono em {
-  font-family: var(--font-serif); font-size: 16px; font-style: normal; margin: 0 2px;
+.wax-seal .seal-logo {
+  width: 58px;
+  height: auto;
+  max-width: 76%;
+  max-height: 70%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, .85)) drop-shadow(0 0 6px rgba(224, 180, 79, .35));
 }
 @keyframes sealPulse {
-  from { box-shadow: 0 8px 24px rgba(10, 0, 0, .6), 0 0 0 0 rgba(224, 180, 79, 0); }
-  to { box-shadow: 0 8px 24px rgba(10, 0, 0, .6), 0 0 0 20px rgba(224, 180, 79, .15); }
+  from { box-shadow: 0 10px 28px rgba(10, 0, 0, .75), 0 0 0 0 rgba(212, 175, 55, 0); }
+  to { box-shadow: 0 10px 28px rgba(10, 0, 0, .75), 0 0 0 18px rgba(212, 175, 55, .18); }
 }
 
 .env-hint {
@@ -583,7 +586,29 @@ a { color:inherit; text-decoration:none; }
   font-size: clamp(54px, 15.5vw, 74px);
   line-height: 1.08;
   font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: clamp(56px, 15vw, 80px);
+}
+.hero-name-img {
   display: block;
+  width: auto;
+  max-width: clamp(240px, 72vw, 320px);
+  height: clamp(58px, 16vw, 82px);
+  object-fit: contain;
+  margin: 0 auto;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.45));
+}
+.hero-amp-img {
+  display: block;
+  width: auto;
+  height: clamp(22px, 6vw, 28px);
+  object-fit: contain;
+  margin: 0 auto;
+  pointer-events: none;
+  filter: drop-shadow(0 1px 4px rgba(212, 175, 55, 0.4));
 }
 .hero-parent {
   font-family: var(--font-serif);
@@ -1322,12 +1347,19 @@ body.lang-mr .event-row-val, body.lang-ml .event-row-val {
   text-indent: .24em;
 }
 .footer-monogram {
-  font-family: var(--font-names, var(--font-script)); font-size: 48px; line-height: 1;
-  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 18px;
+  margin-bottom: 8px;
 }
-.footer-monogram em {
-  font-family: var(--font-serif); font-size: 26px; color: var(--gold-light);
-  font-style: normal; margin: 0 4px;
+.footer-monogram-img {
+  display: block;
+  width: clamp(82px, 22vw, 96px);
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.45));
 }
 .footer-date-city {
   font-family: var(--font-roman); font-size: 10px; letter-spacing: .32em;
@@ -1648,9 +1680,9 @@ body.lang-mr .event-row-val, body.lang-ml .event-row-val {
         <div class="env-flap-back"></div>
       </div>
     </div>
-    <!-- Wax seal with gold monogram -->
+    <!-- Wax seal with gold monogram logo -->
     <button class="wax-seal" id="waxSeal" type="button" aria-label="Open the wedding invitation" aria-haspopup="true" onclick="openEnvelope()">
-      <span class="seal-mono">A <em>&amp;</em> V</span>
+      <img class="seal-logo" src="assets/seal-monogram.png" alt="A &amp; V Monogram" width="58" height="35" />
     </button>
   </div>
 
@@ -1699,16 +1731,22 @@ body.lang-mr .event-row-val, body.lang-ml .event-row-val {
             <!-- 6. Names & Parents -->
       <div class="hero-names-wrap">
         <div class="hero-person-block">
-          <h1 class="hero-name gold-text gold-glow hero-line" id="heroBride">Aayushi</h1>
+          <h1 class="hero-name hero-line" id="heroBride" aria-label="Aayushi">
+            <img class="hero-name-img" src="assets/name-aayushi.png" alt="Aayushi" width="429" height="146">
+          </h1>
           <p class="hero-parent hero-line" id="heroBrideParents" data-i18n="brideParents">D/O Anita &amp; Laxman Godse</p>
         </div>
         <div class="hero-amp-wrap hero-line">
           <span class="amp-line"></span>
-          <span class="hero-amp">&amp;</span>
+          <span class="hero-amp" id="heroAmp">
+            <img class="hero-amp-img" src="assets/name-amp.png" alt="&amp;" width="55" height="50">
+          </span>
           <span class="amp-line"></span>
         </div>
         <div class="hero-person-block">
-          <h1 class="hero-name gold-text gold-glow hero-line" id="heroGroom">Vaishakh</h1>
+          <h1 class="hero-name hero-line" id="heroGroom" aria-label="Vaishakh">
+            <img class="hero-name-img" src="assets/name-vaishakh.png" alt="Vaishakh" width="450" height="135">
+          </h1>
           <p class="hero-parent hero-line" id="heroGroomParents" data-i18n="groomParents">S/O Chhaya &amp; Jagannath Vishwanath</p>
         </div>
       </div>
@@ -1896,7 +1934,9 @@ body.lang-mr .event-row-val, body.lang-ml .event-row-val {
       <svg class="divider-diamond" aria-hidden="true"><use href="#sym-diamond-divider"/></svg>
       <p class="closing-love" data-i18n="closingLove">With love and gratitude,</p>
       <p class="closing-fams" id="closingFams">The Godse and Nair Families</p>
-      <div class="footer-monogram gold-text">A<em>&amp;</em>V</div>
+      <div class="footer-monogram">
+        <img class="footer-monogram-img" src="assets/seal-monogram.png" alt="A &amp; V Monogram" width="94" height="57">
+      </div>
       <p class="footer-date-city">27 &amp; 28 · 12 · 2026 &nbsp;—&nbsp; <span id="footCity">Pune</span></p>
     </div>
 
@@ -2254,10 +2294,15 @@ try {
 
 let redrawTimerFoil = null;
 
-$("#heroBride").textContent = 'Aayushi';
-$("#heroBrideParents").textContent = CONFIG.parents.bride.en;
-$("#heroGroom").textContent = CONFIG.groom;
-$("#heroGroomParents").textContent = CONFIG.parents.groom.en;
+const EN_BRIDE_HTML = '<img class="hero-name-img" src="assets/name-aayushi.png" alt="Aayushi" width="429" height="146">';
+const EN_GROOM_HTML = '<img class="hero-name-img" src="assets/name-vaishakh.png" alt="Vaishakh" width="450" height="135">';
+const EN_AMP_HTML = '<img class="hero-amp-img" src="assets/name-amp.png" alt="&amp;" width="55" height="50">';
+
+if ($("#heroBride")) $("#heroBride").innerHTML = EN_BRIDE_HTML;
+if ($("#heroBrideParents")) $("#heroBrideParents").textContent = CONFIG.parents.bride.en;
+if ($("#heroGroom")) $("#heroGroom").innerHTML = EN_GROOM_HTML;
+if ($("#heroGroomParents")) $("#heroGroomParents").textContent = CONFIG.parents.groom.en;
+if ($("#heroAmp")) $("#heroAmp").innerHTML = EN_AMP_HTML;
 $("#stdDateText").textContent = CONFIG.displayDate;
 $("#stdVenueText").textContent = CONFIG.venue;
 $("#stdAddrText").textContent = CONFIG.address;
@@ -2380,13 +2425,26 @@ function applyLang(lang){
     if (dict[k] !== undefined) el.placeholder = dict[k];
   });
 
-    const names = {
-    en: { brideHtml: "Aayushi", groom: "Vaishakh" },
-    mr: { brideHtml: "आयुषी", groom: "वैशाख" },
-    ml: { brideHtml: "ആയുഷി", groom: "വൈശാഖ്" }
+  const names = {
+    en: {
+      brideHtml: EN_BRIDE_HTML,
+      groomHtml: EN_GROOM_HTML,
+      ampHtml: EN_AMP_HTML
+    },
+    mr: {
+      brideHtml: '<span class="gold-text gold-glow">आयुषी</span>',
+      groomHtml: '<span class="gold-text gold-glow">वैशाख</span>',
+      ampHtml: '<span class="gold-text gold-glow">&amp;</span>'
+    },
+    ml: {
+      brideHtml: '<span class="gold-text gold-glow">ആയുഷി</span>',
+      groomHtml: '<span class="gold-text gold-glow">വൈശാഖ്</span>',
+      ampHtml: '<span class="gold-text gold-glow">&amp;</span>'
+    }
   };
-  $("#heroBride").textContent = names[lang].brideHtml;
-  $("#heroGroom").textContent = names[lang].groom;
+  if ($("#heroBride")) $("#heroBride").innerHTML = names[lang].brideHtml;
+  if ($("#heroGroom")) $("#heroGroom").innerHTML = names[lang].groomHtml;
+  if ($("#heroAmp")) $("#heroAmp").innerHTML = names[lang].ampHtml;
   if ($("#heroBrideParents")) $("#heroBrideParents").textContent = dict.brideParents || CONFIG.parents.bride[lang];
   if ($("#heroGroomParents")) $("#heroGroomParents").textContent = dict.groomParents || CONFIG.parents.groom[lang];
 
