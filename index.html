@@ -108,9 +108,6 @@ body.lang-mr .royal-card, body.lang-mr .royal-card *,
 body.lang-ml .royal-card, body.lang-ml .royal-card * {
   color: var(--maroon-text);
 }
-body.lang-mr .seg button.active, body.lang-ml .seg button.active,
-body.lang-mr .rsvp-submit-btn, body.lang-mr .rsvp-submit-btn *,
-body.lang-ml .rsvp-submit-btn, body.lang-ml .rsvp-submit-btn *,
 body.lang-mr .card-outline-btn:hover, body.lang-mr .card-outline-btn:hover *,
 body.lang-ml .card-outline-btn:hover, body.lang-ml .card-outline-btn:hover * {
   color: var(--cream-card) !important;
@@ -473,6 +470,7 @@ a { color:inherit; text-decoration:none; }
 /* Royal Crimson Wax Seal with Intertwined Gold Monogram */
 .wax-seal {
   position: absolute; left: 50%; top: 58%; translate: -50% -50%;
+  transform-origin: center center;
   z-index: 30; width: 78px; height: 78px; border-radius: 50%;
   cursor: pointer;
   background: radial-gradient(circle at 34% 32%, #7A141D 0%, #580B12 45%, #3D050A 80%, #240205 100%);
@@ -486,7 +484,7 @@ a { color:inherit; text-decoration:none; }
   outline: none;
 }
 .wax-seal:focus-visible { box-shadow: 0 0 0 3px var(--gold), 0 10px 28px rgba(10, 0, 0, .75); }
-.wax-seal:active { filter: brightness(1.12); transform: translate(-50%, -50%) scale(0.97); }
+.wax-seal:active { filter: brightness(1.12); transform: scale(0.97); }
 .wax-seal::before {
   content: ""; position: absolute; inset: 6px; border-radius: 50%;
   border: 1px dashed rgba(212, 175, 55, 0.4);
@@ -1248,90 +1246,19 @@ body.lang-mr .event-row-val, body.lang-ml .event-row-val {
   text-shadow: 0 2px 8px rgba(0,0,0,0.8);
 }
 
-/* ============ RSVP SECTION ============ */
-.rsvp { padding-top: 20px; }
-.rsvp-card {
-  max-width: 380px; margin: 0 auto; padding: 36px 24px 32px;
-  text-align: center; position: relative; z-index: 5;
-}
-.rsvp-form { text-align: left; margin-top: 28px; }
-.field { margin-bottom: 22px; }
-.field label {
-  display: block; font-family: var(--font-roman); font-size: 9.5px;
-  letter-spacing: .24em; text-transform: uppercase; color: var(--maroon-text);
-  opacity: 0.75; font-weight: 600; margin-bottom: 8px; text-indent: .08em;
-}
-.field input, .field textarea {
-  width: 100%; background: rgba(107, 15, 26, 0.03); border: none;
-  border-bottom: 1.5px solid rgba(107, 15, 26, 0.35); padding: 8px 4px;
-  font-family: var(--font-serif); font-size: 18px; font-weight: 500;
-  color: var(--maroon-text); outline: none; border-radius: 0; resize: none;
-  transition: border-color .4s var(--ease), box-shadow .4s var(--ease);
-}
-.field input:focus, .field textarea:focus {
-  border-bottom-color: var(--gold-antique);
-  box-shadow: 0 1px 0 var(--gold-antique);
-  background: rgba(107, 15, 26, 0.05);
-}
-.field input::placeholder, .field textarea::placeholder {
-  color: rgba(107, 15, 26, 0.55); font-style: italic; font-size: 15.5px; font-weight: 400;
-}
-.seg {
-  display: flex; border: 1px solid rgba(107, 15, 26, 0.35); background: rgba(107, 15, 26, 0.03);
-}
-.seg button {
-  flex: 1; padding: 12px 6px; font-family: var(--font-roman); font-size: 9.5px;
-  letter-spacing: .18em; text-transform: uppercase; color: var(--maroon-text);
-  opacity: 0.75; transition: all .35s var(--ease); text-align: center;
-  font-weight: 500; background: transparent;
-}
-.seg button + button { border-left: 1px solid rgba(107, 15, 26, 0.35); }
-.seg button.active {
-  background: var(--maroon-text); color: var(--cream-card); font-weight: 600; opacity: 1;
-}
-.stepper {
-  display: flex; align-items: center; justify-content: space-between;
-  border: 1px solid rgba(107, 15, 26, 0.35); padding: 4px; background: rgba(107, 15, 26, 0.03);
-}
-.stepper button {
-  width: 38px; height: 38px; font-family: var(--font-serif); font-size: 22px;
-  font-weight: 600; color: var(--maroon-text); display: flex; align-items: center; justify-content: center;
-  cursor: pointer; transition: background .3s var(--ease);
-}
-.stepper button:active { background: rgba(107, 15, 26, 0.12); }
-.stepper .g-count {
-  font-family: var(--font-roman); font-size: 18px; font-weight: 600; color: var(--maroon-text);
-  min-width: 30px; text-align: center;
-}
-.rsvp-submit-btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-  width: 100%; margin-top: 10px; padding: 15px 18px;
-  background: var(--maroon-text); color: var(--cream-card);
-  border: 1px solid var(--maroon-text);
-  font-family: var(--font-roman); font-size: 10.5px; font-weight: 600;
-  letter-spacing: .24em; text-transform: uppercase; text-indent: .24em;
-  cursor: pointer; box-shadow: 0 4px 14px rgba(107, 15, 26, 0.25);
-  transition: all .35s var(--ease);
-}
-.rsvp-submit-btn svg {
-  flex-shrink: 0; color: var(--cream-card);
-}
-.rsvp-submit-btn:hover, .rsvp-submit-btn:active {
-  background: #500A13; border-color: #500A13; color: #FFF;
-}
-.rsvp-note {
-  margin-top: 14px; text-align: center; font-family: var(--font-roman);
-  font-size: 9px; letter-spacing: .22em; text-transform: uppercase;
-  color: var(--maroon-text); opacity: 0.75; text-indent: .22em; font-weight: 500;
-}
-
 /* ============ CLOSING & FOOTER ============ */
+.closing { padding: 40px 24px 60px; }
 .closing-wrap {
   position: relative; z-index: 5; text-align: center;
   padding: 48px 24px 30px;
 }
 .footer-ganesh {
-  width: 48px; height: 58px; margin: 0 auto 10px; color: var(--gold);
+  width: clamp(78px, 18vw, 92px);
+  height: auto;
+  aspect-ratio: 200 / 240;
+  margin: 0 auto 18px;
+  display: block;
+  filter: drop-shadow(0 2px 10px rgba(212, 175, 55, 0.35));
 }
 .closing-complete {
   font-family: var(--font-serif); font-style: italic; font-size: 18px;
@@ -1342,9 +1269,36 @@ body.lang-mr .event-row-val, body.lang-ml .event-row-val {
   color: var(--cream-85); margin-top: 18px;
 }
 .closing-fams {
-  font-family: var(--font-roman); font-size: 10.5px; letter-spacing: .24em;
-  text-transform: uppercase; color: var(--gold-light); margin-top: 6px;
-  text-indent: .24em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 10px;
+  text-align: center;
+}
+.closing-fam-line {
+  display: block;
+  font-family: var(--font-roman);
+  font-size: clamp(12.5px, 3.4vw, 14px);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  font-weight: 500;
+  text-indent: .18em;
+  line-height: 1.35;
+}
+body.lang-mr .closing-fam-line {
+  font-family: var(--font-devanagari) !important;
+  font-size: clamp(13px, 3.6vw, 15px);
+  letter-spacing: 0.04em;
+  text-indent: 0;
+}
+body.lang-ml .closing-fam-line {
+  font-family: var(--font-malayalam) !important;
+  font-size: clamp(12px, 3.3vw, 14px);
+  letter-spacing: 0.03em;
+  text-indent: 0;
 }
 .footer-monogram {
   display: flex;
@@ -1878,8 +1832,8 @@ body.lang-mr .event-row-val, body.lang-ml .event-row-val {
     </div>
   </section>
 
-  <!-- ============ RSVP SECTION ============ -->
-  <section class="section rsvp" id="rsvp">
+  <!-- ============ CLOSING SECTION ============ -->
+  <section class="section closing" id="closing">
     <div class="sec-frame" aria-hidden="true">
       <div class="sec-frame-outer"></div>
       <div class="sec-frame-inner"></div>
@@ -1889,51 +1843,16 @@ body.lang-mr .event-row-val, body.lang-ml .event-row-val {
       <svg class="c-orn c-br"><use href="#sym-corner-bottom"/></svg>
     </div>
 
-    <div class="royal-card rsvp-card" data-reveal>
-      <p class="label-roman" data-i18n="rsvpLabel">RSVP</p>
-      <h2 class="sec-title" data-i18n="rsvpTitle">We Request Your Presence</h2>
-      <p class="sec-sub" data-i18n="rsvpText">Your blessings will make our celebration complete.</p>
-      <svg class="divider-diamond" style="width:190px;margin:14px auto;" aria-hidden="true"><use href="#sym-diamond-divider-antique"/></svg>
-
-      <form class="rsvp-form" id="rsvpForm" onsubmit="return false">
-        <div class="field">
-          <label for="guestName" data-i18n="nameLabel">Your Name</label>
-          <input type="text" id="guestName" autocomplete="name" data-i18n-ph="namePlaceholder" placeholder="Full name">
-        </div>
-        <div class="field">
-          <label data-i18n="attendLabel">Will you attend?</label>
-          <div class="seg" role="group" aria-label="Attendance">
-            <button type="button" class="seg-btn active" data-attend="accept" data-i18n="accept">Joyfully Accepts</button>
-            <button type="button" class="seg-btn" data-attend="decline" data-i18n="decline">Regretfully Declines</button>
-          </div>
-        </div>
-        <div class="field" id="guestField">
-          <label data-i18n="guestsLabel">Number of Guests</label>
-          <div class="stepper">
-            <button type="button" id="guestMinus" aria-label="Fewer guests">−</button>
-            <span class="g-count" id="guestCount">2</span>
-            <button type="button" id="guestPlus" aria-label="More guests">+</button>
-          </div>
-        </div>
-        <div class="field">
-          <label for="guestNote"><span data-i18n="noteLabel">A Note for the Couple</span> <span style="letter-spacing:.06em;text-transform:none">(optional)</span></label>
-          <textarea id="guestNote" rows="2" data-i18n-ph="notePlaceholder" placeholder="Your blessings and wishes..."></textarea>
-        </div>
-        <button type="button" class="rsvp-submit-btn" id="whatsappBtn">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 11.5 A8.5 8.5 0 0 1 12.5 20 L4 21 L5 12.8 A8.5 8.5 0 1 1 21 11.5Z"/></svg>
-          <span data-i18n="whatsappBtn">Send RSVP on WhatsApp</span>
-        </button>
-        <p class="rsvp-note" data-i18n="rsvpNote">Kindly respond by 30 November 2026</p>
-      </form>
-    </div>
-
     <!-- Closing Details -->
     <div class="closing-wrap" data-reveal>
-      <img class="footer-ganesh" src="assets/ganpati.svg" alt="Lord Ganesha" width="48" height="58">
+      <img class="footer-ganesh" src="assets/ganpati.svg" alt="Lord Ganesha" width="84" height="101">
       <p class="closing-complete" data-i18n="presenceComplete">Your presence will make our celebration complete</p>
       <svg class="divider-diamond" aria-hidden="true"><use href="#sym-diamond-divider"/></svg>
       <p class="closing-love" data-i18n="closingLove">With love and gratitude,</p>
-      <p class="closing-fams" id="closingFams">The Godse and Nair Families</p>
+      <div class="closing-fams" id="closingFams">
+        <span class="closing-fam-line">Anita &amp; Laxman Godse</span>
+        <span class="closing-fam-line">Chaya &amp; Jagannath Vishwanath</span>
+      </div>
       <div class="footer-monogram">
         <img class="footer-monogram-img" src="assets/seal-monogram.png" alt="A &amp; V Monogram" width="94" height="57">
       </div>
@@ -1941,7 +1860,6 @@ body.lang-mr .event-row-val, body.lang-ml .event-row-val {
     </div>
 
     <footer class="footer-end">
-      <span data-i18n="footerLine">Aayushi weds Vaishakh</span><br>
       <span style="color:var(--gold);">#AayushiWedsVaishakh</span>
     </footer>
   </section>
@@ -2131,8 +2049,8 @@ const CONFIG = {
       whatsappBtn: "Send RSVP on WhatsApp",
       rsvpNote: "Kindly respond by 30 November 2026",
       closingLove: "With love and gratitude,",
-      closingFams: "The Godse and Nair Families",
-      footerLine: "Aayushi weds Vaishakh",
+      closingFams: "Anita & Laxman Godse\nChaya & Jagannath Vishwanath",
+      footerLine: "",
       waIntro: "Namaste! I would like to RSVP for the wedding of Aayushi & Vaishakh (27 & 28 Dec 2026).",
       waAccept: "Joyfully accepts", waDecline: "Regretfully declines",
       waGuests: "Guests", waName: "Name"
@@ -2200,8 +2118,8 @@ const CONFIG = {
       whatsappBtn: "WhatsApp वर RSVP पाठवा",
       rsvpNote: "कृपया ३० नोव्हेंबर २०२६ पर्यंत कळवा",
       closingLove: "प्रेम व कृतज्ञतेसह,",
-      closingFams: "गोडसे व नायर परिवार",
-      footerLine: "आयुषी वेड्स वैशाख",
+      closingFams: "अनिता व लक्ष्मण गोडसे\nछाया व जगन्नाथ विश्वनाथ",
+      footerLine: "",
       waIntro: "नमस्ते! आयुषी व वैशाख यांच्या लग्नासाठी (२७ व २८ डिसेंबर २०२६) मी RSVP करू इच्छितो.",
       waAccept: "आनंदाने उपस्थित राहीन", waDecline: "खेदपूर्वक उपस्थित राहू शकणार नाही",
       waGuests: "पाहुणे", waName: "नाव"
@@ -2269,8 +2187,8 @@ const CONFIG = {
       whatsappBtn: "WhatsApp-ൽ RSVP അയയ്ക്കുക",
       rsvpNote: "2026 നവംബർ 30-നകം അറിയിക്കുക",
       closingLove: "സ്നേഹത്തോടും നന്ദിയോടും കൂടി,",
-      closingFams: "ഗോഡ്‌സെ, നായർ കുടുംബങ്ങൾ",
-      footerLine: "ആയുഷി വെഡ്‌സ് വൈശാഖ്",
+      closingFams: "അനിത & ലക്ഷ്മൺ ഗോഡ്സെ\nഛായ & ജഗന്നാഥ് വിശ്വനാഥ്",
+      footerLine: "",
       waIntro: "നമസ്കാരം! ആയുഷിയുടെയും വൈശാഖിന്റെയും വിവാഹത്തിന് (27 & 28 ഡിസംബർ 2026) RSVP നൽകുന്നു.",
       waAccept: "സന്തോഷത്തോടെ പങ്കെടുക്കും", waDecline: "ഖേദപൂർവ്വം പങ്കെടുക്കാൻ കഴിയില്ല",
       waGuests: "അതിഥികൾ", waName: "പേര്"
@@ -2448,12 +2366,12 @@ function applyLang(lang){
   if ($("#heroBrideParents")) $("#heroBrideParents").textContent = dict.brideParents || CONFIG.parents.bride[lang];
   if ($("#heroGroomParents")) $("#heroGroomParents").textContent = dict.groomParents || CONFIG.parents.groom[lang];
 
-  const fam = {
-    en: `The ${CONFIG.brideFamily} and ${CONFIG.groomFamily} Families`,
-    mr: `${CONFIG.brideFamily} व ${CONFIG.groomFamily} परिवार`,
-    ml: `${CONFIG.brideFamily}, ${CONFIG.groomFamily} കുടുംബങ്ങൾ`
+  const famHtml = {
+    en: '<span class="closing-fam-line">Anita &amp; Laxman Godse</span><span class="closing-fam-line">Chaya &amp; Jagannath Vishwanath</span>',
+    mr: '<span class="closing-fam-line">अनिता व लक्ष्मण गोडसे</span><span class="closing-fam-line">छाया व जगन्नाथ विश्वनाथ</span>',
+    ml: '<span class="closing-fam-line">അനിത &amp; ലക്ഷ്മൺ ഗോഡ്സെ</span><span class="closing-fam-line">ഛായ &amp; ജഗന്നാഥ് വിശ്വനാഥ്</span>'
   };
-  $("#closingFams").textContent = fam[lang];
+  if ($("#closingFams")) $("#closingFams").innerHTML = famHtml[lang];
 
   if (typeof redrawTimerFoil === "function") {
     try { redrawTimerFoil(); } catch(e){}
@@ -2612,7 +2530,7 @@ function openEnvelope(){
       }
     });
 
-    tl.to(sealEl, { y: -20, scale: 0.88, opacity: 0, duration: 0.35, ease: "power2.out" })
+    tl.to(sealEl, { x: 0, y: -20, scale: 0.88, opacity: 0, duration: 0.35, ease: "power2.out" })
       .set(sealEl, { display: "none" })
       .to(envEl, { rotationX: 0, rotationY: 0, duration: 0.35, ease: "power2.out" }, "<")
       .to("#envFlap", { rotationX: 180, duration: 0.65, ease: "power2.inOut" }, "-=0.1")
@@ -2993,29 +2911,6 @@ setInterval(tickCountdown, 1000);
   requestAnimationFrame(drawTimerFoil);
 })();
 
-/* ================= RSVP ================= */
-let attending = "accept", guests = 2;
-$$(".seg-btn").forEach(b => b.addEventListener("click", () => {
-  $$(".seg-btn").forEach(x => x.classList.remove("active"));
-  b.classList.add("active"); attending = b.dataset.attend;
-  $("#guestField").style.opacity = attending === "decline" ? ".35" : "1";
-  $("#guestField").style.pointerEvents = attending === "decline" ? "none" : "auto";
-}));
-
-$("#guestMinus").addEventListener("click", () => {
-  guests = Math.max(1, guests - 1); $("#guestCount").textContent = guests;
-});
-$("#guestPlus").addEventListener("click", () => {
-  guests = Math.min(8, guests + 1); $("#guestCount").textContent = guests;
-});
-
-$("#whatsappBtn").addEventListener("click", () => {
-  const dict = T(), name = $("#guestName").value.trim(), note = $("#guestNote").value.trim();
-  let msg = dict.waIntro + "\n\n" + dict.waName + ": " + (name || "—") + "\n" + (attending === "accept" ? dict.waAccept : dict.waDecline);
-  if (attending === "accept") msg += "\n" + dict.waGuests + ": " + guests;
-  if (note) msg += "\n\n" + note;
-  window.open("https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(msg), "_blank");
-});
 
 /* ================= SCROLL & GSAP ================= */
 const progressBar = $("#progressBar"), siteHeader = $("#siteHeader");
