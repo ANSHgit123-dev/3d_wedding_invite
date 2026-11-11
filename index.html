@@ -2427,22 +2427,41 @@ applyLang("en");
 // Playback Trimming Configuration
 const START_TIME = 0;
 const END_TIME = 21.5;
+const LOOP_MUSIC = true;
 
 let audioEl = null, audioCtx = null, masterGain = null, musicOn = false, musicStarted = false;
+let isLooping = false;
 
-function stopAudioAtEnd() {
-  if (audioEl) {
+function loopOrStop() {
+  if (!audioEl) return;
+  if (LOOP_MUSIC && musicOn) {
+    if (isLooping) return;
+    isLooping = true;
+    audioEl.currentTime = START_TIME;
+    const playPromise = audioEl.play();
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        isLooping = false;
+        requestAnimationFrame(checkPlaybackBounds);
+      }).catch((err) => {
+        isLooping = false;
+        console.warn("Loop playback error:", err);
+      });
+    } else {
+      isLooping = false;
+    }
+  } else {
     audioEl.pause();
     audioEl.currentTime = END_TIME;
+    musicOn = false;
+    updateMusicBtn();
   }
-  musicOn = false;
-  updateMusicBtn();
 }
 
 function checkPlaybackBounds() {
-  if (audioEl && !audioEl.paused) {
+  if (audioEl && !audioEl.paused && musicOn) {
     if (audioEl.currentTime >= END_TIME) {
-      stopAudioAtEnd();
+      loopOrStop();
       return;
     }
     requestAnimationFrame(checkPlaybackBounds);
@@ -2452,7 +2471,7 @@ function checkPlaybackBounds() {
 if (CONFIG.musicUrl) {
   audioEl = document.getElementById("bgMusic") || new Audio(CONFIG.musicUrl);
   audioEl.preload = "auto";
-  audioEl.loop = false; // Strictly do not loop
+  audioEl.loop = false; // Custom trimming handled in JS to loop precisely between START_TIME and END_TIME
   audioEl.volume = 0;
 
   // Set start position once metadata loads
@@ -2465,13 +2484,13 @@ if (CONFIG.musicUrl) {
   // timeupdate event enforces playback boundary across all browsers (including backgrounded tabs)
   audioEl.addEventListener("timeupdate", () => {
     if (audioEl.currentTime >= END_TIME) {
-      stopAudioAtEnd();
+      loopOrStop();
     }
   });
 
   // Handle natural end or seeking
   audioEl.addEventListener("ended", () => {
-    stopAudioAtEnd();
+    loopOrStop();
   });
 
   // Graceful error logging
@@ -2482,8 +2501,8 @@ if (CONFIG.musicUrl) {
 
 function startMusic() {
   if (musicStarted) {
-    // If music already started, ensure we don't unexpectedly restart from 0
-    if (!musicOn && audioEl && audioEl.currentTime < END_TIME) {
+    // If music already started, user interaction shouldn't restart unless toggled on
+    if (!musicOn) {
       toggleMusic(true);
     }
     return;
@@ -2493,9 +2512,7 @@ function startMusic() {
   updateMusicBtn();
 
   if (audioEl) {
-    if (audioEl.currentTime >= END_TIME || audioEl.currentTime < START_TIME) {
-      audioEl.currentTime = START_TIME;
-    }
+    audioEl.currentTime = START_TIME;
     const playPromise = audioEl.play();
     if (playPromise !== undefined) {
       playPromise.then(() => {
@@ -2545,11 +2562,9 @@ function toggleMusic(forceOn) {
 
   if (audioEl) {
     if (musicOn) {
-      // If toggled on after reaching END_TIME, replay from START_TIME
-      if (audioEl.currentTime >= END_TIME) {
-        audioEl.currentTime = START_TIME;
-        audioEl.volume = 0.6;
-      }
+      // When user switches music back on, resume from the beginning of the audio segment
+      audioEl.currentTime = START_TIME;
+      audioEl.volume = 0.6;
       const playPromise = audioEl.play();
       if (playPromise !== undefined) {
         playPromise.then(() => {
