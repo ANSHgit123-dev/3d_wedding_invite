@@ -7,7 +7,7 @@
 <meta name="description" content="Royal Wedding Invitation for Aayushi and Vaishakh. 27 & 28 December 2026 at Krushnai Resort by Brahma, Donaje, Pune.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Allura&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Noto+Serif+Devanagari:wght@400;500;600;700&family=Noto+Serif+Malayalam:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
 <style>
 /* ============ ROYAL CRIMSON & GOLD FOIL TOKENS ============ */
 :root {
@@ -59,8 +59,6 @@
   --font-script: var(--font-names);
   --font-roman: "Cinzel", "Cormorant Garamond", serif;
   --font-serif: "Cormorant Garamond", serif;
-  --font-devanagari: "Noto Serif Devanagari", "Cormorant Garamond", serif;
-  --font-malayalam: "Noto Serif Malayalam", "Cormorant Garamond", serif;
   
   --ease: cubic-bezier(.22, 1, .36, 1);
   --maxw: 480px;
@@ -77,41 +75,6 @@ body {
 }
 body.locked { overflow:hidden; height:100dvh; }
 
-/* Language Font Switching */
-body.lang-mr, body.lang-mr [data-i18n], body.lang-mr .serif-text { font-family:var(--font-devanagari); }
-body.lang-ml, body.lang-ml [data-i18n], body.lang-ml .serif-text { font-family:var(--font-malayalam); }
-body.lang-mr .hero-name, body.lang-mr .name-script, body.lang-mr .cap-a {
-  font-family: var(--font-devanagari) !important;
-  font-size: clamp(38px, 11vw, 48px) !important;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-}
-body.lang-ml .hero-name, body.lang-ml .name-script, body.lang-ml .cap-a {
-  font-family: var(--font-malayalam) !important;
-  font-size: clamp(34px, 10vw, 44px) !important;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-}
-body.lang-mr .hero-blessing {
-  font-family: var(--font-devanagari) !important;
-  font-style: normal;
-  font-size: 15px;
-  line-height: 1.6;
-}
-body.lang-ml .hero-blessing {
-  font-family: var(--font-malayalam) !important;
-  font-style: normal;
-  font-size: 14.5px;
-  line-height: 1.6;
-}
-body.lang-mr .royal-card, body.lang-mr .royal-card *,
-body.lang-ml .royal-card, body.lang-ml .royal-card * {
-  color: var(--maroon-text);
-}
-body.lang-mr .card-outline-btn:hover, body.lang-mr .card-outline-btn:hover *,
-body.lang-ml .card-outline-btn:hover, body.lang-ml .card-outline-btn:hover * {
-  color: var(--cream-card) !important;
-}
 .maroon-icon { color: var(--maroon-text); }
 
 /* Legacy Capital 'A' span kept neutral */
@@ -621,18 +584,6 @@ a { color:inherit; text-decoration:none; }
   margin-top: clamp(5px, 1.6vw, 8px);
   will-change: transform, opacity;
 }
-body.lang-mr .hero-parent {
-  font-family: var(--font-devanagari) !important;
-  font-style: normal;
-  font-size: clamp(11.5px, 3.3vw, 14px);
-  letter-spacing: 0.02em;
-}
-body.lang-ml .hero-parent {
-  font-family: var(--font-malayalam) !important;
-  font-style: normal;
-  font-size: clamp(10.5px, 3.1vw, 13px);
-  letter-spacing: 0.01em;
-}
 .hero-amp-wrap {
   display: flex; align-items: center; justify-content: center; gap: 16px;
   margin: clamp(6px, 1.8vw, 10px) auto; max-width: 220px;
@@ -836,8 +787,7 @@ body.lang-ml .hero-parent {
   text-align: center;
   line-height: 1.3;
 }
-:lang(en) .std-countdown-heading,
-body:not(.lang-mr):not(.lang-ml) .std-countdown-heading {
+.std-countdown-heading {
   white-space: nowrap;
 }
 .std-timer-stage {
@@ -904,25 +854,6 @@ body:not(.lang-mr):not(.lang-ml) .std-countdown-heading {
   box-shadow: 0 0 0 2px var(--gold-antique);
 }
 
-/* Indic Script Overrides for Cards A & B */
-body.lang-mr .std-date, body.lang-mr .std-venue, body.lang-mr .std-tag, body.lang-mr .std-countdown-heading, body.lang-mr .std-timer-lab, body.lang-mr .std-btn,
-body.lang-ml .std-date, body.lang-ml .std-venue, body.lang-ml .std-tag, body.lang-ml .std-countdown-heading, body.lang-ml .std-timer-lab, body.lang-ml .std-btn {
-  font-family: inherit;
-  letter-spacing: 0.04em;
-  text-indent: 0;
-  text-transform: none;
-}
-body.lang-mr .std-countdown-heading,
-body.lang-ml .std-countdown-heading {
-  white-space: normal;
-  font-size: clamp(12px, 3.4vw, 14.5px);
-  line-height: 1.35;
-}
-body.lang-mr .std-timer-lab,
-body.lang-ml .std-timer-lab {
-  font-size: 9.5px;
-  font-weight: 600;
-}
 
 /* Compact rules for screens shorter than 700px */
 @media (max-height: 700px) {
@@ -1128,24 +1059,6 @@ body.lang-ml .std-timer-lab {
   }
 }
 
-/* Marathi & Malayalam Typography Overrides */
-body.lang-mr .event-title, body.lang-ml .event-title {
-  font-family: inherit;
-  font-size: 16px;
-  letter-spacing: 0.03em;
-}
-body.lang-mr .event-row-label, body.lang-ml .event-row-label {
-  font-family: inherit;
-  font-size: 10px;
-  letter-spacing: 0.06em;
-  text-indent: 0.06em;
-  font-weight: 700;
-}
-body.lang-mr .event-row-val, body.lang-ml .event-row-val {
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 600;
-}
 
 /* ============ EVENT IMAGE LIGHTBOX ============ */
 .img-lightbox {
@@ -1289,18 +1202,6 @@ body.lang-mr .event-row-val, body.lang-ml .event-row-val {
   text-indent: .18em;
   line-height: 1.35;
 }
-body.lang-mr .closing-fam-line {
-  font-family: var(--font-devanagari) !important;
-  font-size: clamp(13px, 3.6vw, 15px);
-  letter-spacing: 0.04em;
-  text-indent: 0;
-}
-body.lang-ml .closing-fam-line {
-  font-family: var(--font-malayalam) !important;
-  font-size: clamp(12px, 3.3vw, 14px);
-  letter-spacing: 0.03em;
-  text-indent: 0;
-}
 .footer-monogram {
   display: flex;
   align-items: center;
@@ -1352,7 +1253,7 @@ body.lang-ml .closing-fam-line {
   position: fixed; left: 50%; transform: translateX(-50%); bottom: 0;
   z-index: 260; width: min(var(--maxw), 100%); pointer-events: none;
   padding: 0 16px calc(14px + env(safe-area-inset-bottom));
-  display: flex; justify-content: space-between; align-items: flex-end;
+  display: flex; justify-content: flex-start; align-items: flex-end;
 }
 .ctrl-pill {
   pointer-events: auto; background: #4A0000;
@@ -1368,22 +1269,6 @@ body.lang-ml .closing-fam-line {
 .ctrl-btn .slash { transition: opacity .4s var(--ease); }
 .ctrl-btn.muted .slash { opacity: 1; }
 .ctrl-btn:not(.muted) .slash { opacity: 0; }
-.lang-switch {
-  display: flex; align-items: center; gap: 7px; border-radius: 999px;
-  padding: 8px 14px;
-}
-.lang-switch button {
-  font-family: var(--font-roman); font-size: 10.5px; letter-spacing: .18em;
-  text-transform: uppercase; color: var(--cream-65); padding: 2px 2px;
-  position: relative; transition: color .4s var(--ease);
-}
-.lang-switch button:hover { color: var(--gold); }
-.lang-switch button.active { color: var(--gold); font-weight: 600; }
-.lang-switch button.active::after {
-  content: ""; position: absolute; left: 0; right: 0; bottom: -2px;
-  height: 1px; background: var(--gold-grad);
-}
-.lang-switch .sep { width: 1px; height: 11px; background: var(--gold-45); }
 
 /* ============ REDUCED MOTION ============ */
 @media (prefers-reduced-motion: reduce) {
@@ -1633,8 +1518,8 @@ body.lang-ml .closing-fam-line {
   </div>
 
   <div class="env-top-msg">
-    <p class="label-roman" data-i18n="togetherFamilies">TOGETHER WITH THE BLESSINGS OF OUR FAMILIES</p>
-    <p class="env-subtitle" data-i18n="cordiallyInvite">We cordially invite you to the wedding ceremony of</p>
+    <p class="label-roman">TOGETHER WITH THE BLESSINGS OF OUR FAMILIES</p>
+    <p class="env-subtitle">We cordially invite you to the wedding ceremony of</p>
   </div>
 
   <div class="env-stage" id="envStage" onclick="openEnvelope()">
@@ -1661,7 +1546,7 @@ body.lang-ml .closing-fam-line {
   </div>
 
   <div class="env-hint" onclick="openEnvelope()">
-    <p data-i18n="tapSeal">Tap the seal to open</p>
+    <p>Tap the seal to open</p>
     <div class="tap-line" aria-hidden="true"></div>
   </div>
 </section>
@@ -1691,16 +1576,16 @@ body.lang-ml .closing-fam-line {
       </div>
 
       <!-- 2. Hero Blessing Line -->
-      <p class="hero-blessing hero-line" data-i18n="heroBlessing">With the blessings of Lord Ganesha, we celebrate the coming together of two hearts, two families, and two beautiful traditions!</p>
+      <p class="hero-blessing hero-line">With the blessings of Lord Ganesha, we celebrate the coming together of two hearts, two families, and two beautiful traditions!</p>
 
       <!-- 3. Lotus Divider -->
       <svg class="divider-lotus hero-line" aria-hidden="true"><use href="#sym-lotus-divider"/></svg>
 
       <!-- 4. Invite Line -->
-      <p class="hero-invite hero-line" data-i18n="cordiallyInvite">We cordially invite you to</p>
+      <p class="hero-invite hero-line">We cordially invite you to</p>
 
       <!-- 5. Ceremony Line -->
-      <p class="hero-ceremony gold-text hero-line" data-i18n="weddingCeremony">the wedding ceremony of</p>
+      <p class="hero-ceremony gold-text hero-line">the wedding ceremony of</p>
 
             <!-- 6. Names & Parents -->
       <div class="hero-names-wrap">
@@ -1708,7 +1593,7 @@ body.lang-ml .closing-fam-line {
           <h1 class="hero-name hero-line" id="heroBride" aria-label="Aayushi">
             <img class="hero-name-img" src="assets/name-aayushi.png" alt="Aayushi" width="429" height="146">
           </h1>
-          <p class="hero-parent hero-line" id="heroBrideParents" data-i18n="brideParents">D/O Anita &amp; Laxman Godse</p>
+          <p class="hero-parent hero-line" id="heroBrideParents">D/O Anita &amp; Laxman Godse</p>
         </div>
         <div class="hero-amp-wrap hero-line">
           <span class="amp-line"></span>
@@ -1721,7 +1606,7 @@ body.lang-ml .closing-fam-line {
           <h1 class="hero-name hero-line" id="heroGroom" aria-label="Vaishakh">
             <img class="hero-name-img" src="assets/name-vaishakh.png" alt="Vaishakh" width="450" height="135">
           </h1>
-          <p class="hero-parent hero-line" id="heroGroomParents" data-i18n="groomParents">S/O Chhaya &amp; Jagannath Vishwanath</p>
+          <p class="hero-parent hero-line" id="heroGroomParents">S/O Chhaya &amp; Jagannath Vishwanath</p>
         </div>
       </div>
 
@@ -1736,19 +1621,19 @@ body.lang-ml .closing-fam-line {
         </div>
         <div class="hero-detail-row" style="margin-top:8px;">
           <svg><use href="#sym-icon-pin"/></svg>
-          <span class="hero-venue-text gold-text" id="heroVenueText" data-i18n="venueName">KRUSHNAI RESORT BY BRAHMA</span>
+          <span class="hero-venue-text gold-text" id="heroVenueText">KRUSHNAI RESORT BY BRAHMA</span>
         </div>
-        <p class="hero-addr-text" id="heroAddrText" data-i18n="venueAddr">Near Sinhagad Fort, Donaje, Pune</p>
+        <p class="hero-addr-text" id="heroAddrText">Near Sinhagad Fort, Donaje, Pune</p>
       </div>
 
       <!-- 9. Diamond Divider -->
       <svg class="divider-diamond hero-line" aria-hidden="true"><use href="#sym-diamond-divider"/></svg>
 
       <!-- 10. Closing Italic Line -->
-      <p class="hero-closing hero-line" data-i18n="presenceComplete">Your presence will make our celebration complete</p>
+      <p class="hero-closing hero-line">Your presence will make our celebration complete</p>
 
       <div class="hero-scroll hero-line">
-        <p class="label-roman label-roman--small" data-i18n="scrollDown">SCROLL</p>
+        <p class="label-roman label-roman--small">SCROLL</p>
         <div class="sline" aria-hidden="true"></div>
       </div>
     </div>
@@ -1769,7 +1654,7 @@ body.lang-ml .closing-fam-line {
     <div class="std-container">
       <!-- CARD A: Normal Date & Location Card (No scratch, no foil) -->
       <article class="royal-card std-card std-card-a" data-reveal>
-        <p class="std-tag" data-i18n="saveLabel">SAVE THE DATE</p>
+        <p class="std-tag">SAVE THE DATE</p>
         <svg class="std-divider" aria-hidden="true"><use href="#sym-lotus-divider-antique"/></svg>
         
         <div class="std-details">
@@ -1779,47 +1664,47 @@ body.lang-ml .closing-fam-line {
           </div>
           <div class="std-row">
             <svg class="std-icon" aria-hidden="true"><use href="#sym-icon-pin"/></svg>
-            <span class="std-venue" id="stdVenueText" data-i18n="venueName">KRUSHNAI RESORT BY BRAHMA</span>
+            <span class="std-venue" id="stdVenueText">KRUSHNAI RESORT BY BRAHMA</span>
           </div>
-          <p class="std-addr" id="stdAddrText" data-i18n="venueAddr">Near Sinhagad Fort, Donaje, Pune</p>
+          <p class="std-addr" id="stdAddrText">Near Sinhagad Fort, Donaje, Pune</p>
         </div>
 
         <div class="std-actions">
           <button class="card-outline-btn std-btn" id="stdAddCalBtn" type="button">
             <svg width="12" height="12" aria-hidden="true"><use href="#sym-icon-cal"/></svg>
-            <span data-i18n="addCalendar">ADD TO CALENDAR</span>
+            <span>ADD TO CALENDAR</span>
           </button>
           <a class="card-outline-btn std-btn" id="stdViewMapBtn" href="#" target="_blank" rel="noopener">
             <svg width="12" height="12" aria-hidden="true"><use href="#sym-icon-pin"/></svg>
-            <span data-i18n="viewMap">VIEW ON MAP</span>
+            <span>VIEW ON MAP</span>
           </a>
         </div>
       </article>
 
       <!-- CARD B: Scratch Card for the Countdown -->
       <article class="royal-card std-card std-card-b" data-reveal>
-        <h3 class="std-countdown-heading" id="stdCountdownHeading" data-i18n="countHeading">The celebrations begin in</h3>
+        <h3 class="std-countdown-heading" id="stdCountdownHeading">The celebrations begin in</h3>
         
         <div class="std-timer-stage" id="stdTimerStage">
           <div class="std-timer-row" id="stdTimerRow" role="timer" aria-label="Countdown to the wedding">
             <div class="std-timer-cell">
               <span class="std-timer-num" id="stdCdDays">00</span>
-              <span class="std-timer-lab" data-i18n="days">Days</span>
+              <span class="std-timer-lab">Days</span>
             </div>
             <div class="std-timer-sep" aria-hidden="true"></div>
             <div class="std-timer-cell">
               <span class="std-timer-num" id="stdCdHours">00</span>
-              <span class="std-timer-lab" data-i18n="hours">Hours</span>
+              <span class="std-timer-lab">Hours</span>
             </div>
             <div class="std-timer-sep" aria-hidden="true"></div>
             <div class="std-timer-cell">
               <span class="std-timer-num" id="stdCdMinutes">00</span>
-              <span class="std-timer-lab" data-i18n="minutes">Minutes</span>
+              <span class="std-timer-lab">Minutes</span>
             </div>
             <div class="std-timer-sep" aria-hidden="true"></div>
             <div class="std-timer-cell">
               <span class="std-timer-num" id="stdCdSeconds">00</span>
-              <span class="std-timer-lab" data-i18n="seconds">Seconds</span>
+              <span class="std-timer-lab">Seconds</span>
             </div>
           </div>
           <canvas class="std-scratch-canvas" id="stdScratchCanvas" tabindex="0" role="button" aria-label="Scratch to reveal the countdown"></canvas>
@@ -1841,8 +1726,8 @@ body.lang-ml .closing-fam-line {
     <svg class="sec-watermark" aria-hidden="true"><use href="#sym-mandala-watermark"/></svg>
 
     <div class="sec-header section--center" data-reveal>
-      <h2 class="sec-title gold-text" data-i18n="celTitle">The Wedding Festivities</h2>
-      <p class="sec-sub" data-i18n="celSub">Where Marathi grace meets Malayali traditions</p>
+      <h2 class="sec-title gold-text">The Wedding Festivities</h2>
+      <p class="sec-sub">Where Marathi grace meets Malayali traditions</p>
       <svg class="divider-lotus" aria-hidden="true"><use href="#sym-lotus-divider"/></svg>
     </div>
 
@@ -1866,9 +1751,9 @@ body.lang-ml .closing-fam-line {
     <!-- Closing Details -->
     <div class="closing-wrap" data-reveal>
       <img class="footer-ganesh" src="assets/ganpati.png" alt="Lord Ganesha" width="84" height="93">
-      <p class="closing-complete" data-i18n="presenceComplete">Your presence will make our celebration complete</p>
+      <p class="closing-complete">Your presence will make our celebration complete</p>
       <svg class="divider-diamond" aria-hidden="true"><use href="#sym-diamond-divider"/></svg>
-      <p class="closing-love" data-i18n="closingLove">With love and gratitude,</p>
+      <p class="closing-love">With love and gratitude,</p>
       <div class="closing-fams" id="closingFams">
         <span class="closing-fam-line">Anita &amp; Laxman Godse</span>
         <span class="closing-fam-line">Chaya &amp; Jagannath Vishwanath</span>
@@ -1894,11 +1779,6 @@ body.lang-ml .closing-fam-line {
   <button class="ctrl-pill ctrl-btn muted" id="musicToggle" type="button" aria-label="Toggle music">
     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 18 V5 L21 3 V16"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="18.5" cy="16" r="2.5"/><line class="slash" x1="3" y1="3" x2="21" y2="21"/></svg>
   </button>
-  <nav class="ctrl-pill lang-switch" aria-label="Language Switcher">
-    <button type="button" data-lang="en" class="active">EN</button><span class="sep"></span>
-    <button type="button" data-lang="mr">मराठी</button><span class="sep"></span>
-    <button type="button" data-lang="ml">മലയാളം</button>
-  </nav>
 </div>
 
 <!-- ============ EVENT PICTURE LIGHTBOX ============ -->
@@ -1929,16 +1809,8 @@ const CONFIG = {
   
   // Parents' Names
   parents: {
-    bride: {
-      en: "D/O Anita & Laxman Godse",
-      mr: "अनिता व लक्ष्मण गोडसे यांची कन्या",
-      ml: "അനിതയുടെയും ലക്ഷ്മൺ ഗോഡ്സെയുടെയും പുത്രി"
-    },
-    groom: {
-      en: "S/O Chhaya & Jagannath Vishwanath",
-      mr: "छाया व जगन्नाथ विश्वनाथ यांचा पुत्र",
-      ml: "ഛായയുടെയും ജഗന്നാഥ് വിശ്വനാഥിന്റെയും പുത്രൻ"
-    }
+    bride: "D/O Anita & Laxman Godse",
+    groom: "S/O Chhaya & Jagannath Vishwanath"
   },
   
   // Dates: 27 & 28 December 2026
@@ -2009,213 +1881,60 @@ const CONFIG = {
   ],
 
   i18n: {
-    en: {
-      togetherFamilies: "TOGETHER WITH THE BLESSINGS OF OUR FAMILIES",
-      heroBlessing: "With the blessings of Lord Ganesha, we celebrate the coming together of two hearts, two families, and two beautiful traditions!",
-      cordiallyInvite: "We cordially invite you to",
-      weddingCeremony: "the wedding ceremony of",
-      brideParents: "D/O Anita & Laxman Godse",
-      groomParents: "S/O Chhaya & Jagannath Vishwanath",
-      venueName: "KRUSHNAI RESORT BY BRAHMA",
-      venueAddr: "Near Sinhagad Fort, Donaje, Pune",
-      presenceComplete: "Your presence will make our celebration complete",
-      tapSeal: "Tap the seal to open",
-      scrollDown: "SCROLL",
-      saveLabel: "SAVE THE DATE",
-      addCalendar: "Add to Calendar",
-      viewMap: "View on Map",
-      countHeading: "The celebrations begin in",
-      married: "With gratitude, we are married.",
-      foilHint: "Scratch here",
-      days: "Days", hours: "Hours", minutes: "Minutes", seconds: "Seconds",
-      celLabel: "THE CELEBRATIONS",
-      celTitle: "The Wedding Festivities",
-      celSub: "Where Marathi grace meets Malayali traditions",
-      
-      // Events Section
-      eventHaldiTitle: "HALDI",
-      eventHaldiDate: "27th December 2026 at 2:00 PM",
-      eventHaldiVenue: "Swimming pool area",
-      eventHaldiDress: "Shades of Yellow",
-      eventHaldiAlt: "Aayushi and Vaishakh at their Haldi ceremony, illustration",
+    togetherFamilies: "TOGETHER WITH THE BLESSINGS OF OUR FAMILIES",
+    heroBlessing: "With the blessings of Lord Ganesha, we celebrate the coming together of two hearts, two families, and two beautiful traditions!",
+    cordiallyInvite: "We cordially invite you to",
+    weddingCeremony: "the wedding ceremony of",
+    brideParents: "D/O Anita & Laxman Godse",
+    groomParents: "S/O Chhaya & Jagannath Vishwanath",
+    venueName: "KRUSHNAI RESORT BY BRAHMA",
+    venueAddr: "Near Sinhagad Fort, Donaje, Pune",
+    presenceComplete: "Your presence will make our celebration complete",
+    tapSeal: "Tap the seal to open",
+    scrollDown: "SCROLL",
+    saveLabel: "SAVE THE DATE",
+    addCalendar: "Add to Calendar",
+    viewMap: "View on Map",
+    countHeading: "The celebrations begin in",
+    married: "With gratitude, we are married.",
+    foilHint: "Scratch here",
+    days: "Days", hours: "Hours", minutes: "Minutes", seconds: "Seconds",
+    celLabel: "THE CELEBRATIONS",
+    celTitle: "The Wedding Festivities",
+    celSub: "Where Marathi grace meets Malayali traditions",
+    
+    // Events Section
+    eventHaldiTitle: "HALDI",
+    eventHaldiDate: "27th December 2026 at 2:00 PM",
+    eventHaldiVenue: "Swimming pool area",
+    eventHaldiDress: "Shades of Yellow",
+    eventHaldiAlt: "Aayushi and Vaishakh at their Haldi ceremony, illustration",
 
-      eventSangeetTitle: "SANGEET",
-      eventSangeetDate: "27th December 2026 at 7:00 PM",
-      eventSangeetVenue: "Banquet hall (4th floor)",
-      eventSangeetDress: "Indo-Western Glam",
-      eventSangeetAlt: "Aayushi and Vaishakh dancing at their Sangeet evening, illustration",
+    eventSangeetTitle: "SANGEET",
+    eventSangeetDate: "27th December 2026 at 7:00 PM",
+    eventSangeetVenue: "Banquet hall (4th floor)",
+    eventSangeetDress: "Indo-Western Glam",
+    eventSangeetAlt: "Aayushi and Vaishakh dancing at their Sangeet evening, illustration",
 
-      eventMalayaliTitle: "MALAYALI WEDDING",
-      eventMalayaliDate: "28th December 2026 at 9:00 AM",
-      eventMalayaliVenue: "Lawn",
-      eventMalayaliDress: "White & Golden Traditionals",
-      eventMalayaliAlt: "Aayushi and Vaishakh in traditional Kasavu attire at their Malayali Wedding, illustration",
+    eventMalayaliTitle: "MALAYALI WEDDING",
+    eventMalayaliDate: "28th December 2026 at 9:00 AM",
+    eventMalayaliVenue: "Lawn",
+    eventMalayaliDress: "White & Golden Traditionals",
+    eventMalayaliAlt: "Aayushi and Vaishakh in traditional Kasavu attire at their Malayali Wedding, illustration",
 
-      eventMarathiTitle: "MARATHI WEDDING",
-      eventMarathiDate: "28th December 2026 at 2:25 PM",
-      eventMarathiVenue: "Lawn",
-      eventMarathiDress: "Traditionals",
-      eventMarathiAlt: "Aayushi and Vaishakh in traditional Maharashtrian wedding attire, illustration",
+    eventMarathiTitle: "MARATHI WEDDING",
+    eventMarathiDate: "28th December 2026 at 2:25 PM",
+    eventMarathiVenue: "Lawn",
+    eventMarathiDress: "Traditionals",
+    eventMarathiAlt: "Aayushi and Vaishakh in traditional Maharashtrian wedding attire, illustration",
 
-      labelDateTime: "Date & Time",
-      labelDateMuhurat: "Date & Muhurat Time",
-      labelVenue: "Venue",
-      labelDress: "Dress Code",
-      rsvpLabel: "RSVP",
-      rsvpTitle: "We Request Your Presence",
-      rsvpText: "Your blessings will make our celebration complete.",
-      nameLabel: "Your Name", namePlaceholder: "Full name",
-      attendLabel: "Will you attend?",
-      accept: "Joyfully Accepts", decline: "Regretfully Declines",
-      guestsLabel: "Number of Guests",
-      noteLabel: "A Note for the Couple", notePlaceholder: "Your blessings and wishes...",
-      whatsappBtn: "Send RSVP on WhatsApp",
-      rsvpNote: "Kindly respond by 30 November 2026",
-      closingLove: "With love and gratitude,",
-      closingFams: "Anita & Laxman Godse\nChaya & Jagannath Vishwanath",
-      footerLine: "",
-      waIntro: "Namaste! I would like to RSVP for the wedding of Aayushi & Vaishakh (27 & 28 Dec 2026).",
-      waAccept: "Joyfully accepts", waDecline: "Regretfully declines",
-      waGuests: "Guests", waName: "Name"
-    },
-    mr: {
-      togetherFamilies: "आमच्या कुटुंबियांच्या आशीर्वादाने",
-      heroBlessing: "भगवान गणेशाच्या आशीर्वादाने, दोन मने, दोन कुटुंबे आणि दोन सुंदर परंपरांच्या मिलनाचा आम्ही आनंदोत्सव साजरा करत आहोत!",
-      cordiallyInvite: "आपणांस सस्नेह निमंत्रण",
-      weddingCeremony: "शुभविवाह सोहळा",
-      brideParents: "अनिता व लक्ष्मण गोडसे यांची कन्या",
-      groomParents: "छाया व जगन्नाथ विश्वनाथ यांचा पुत्र",
-      venueName: "कृष्णाई रिसॉर्ट बाय ब्रह्मा",
-      venueAddr: "सिंहगड किल्ल्याजवळ, डोणजे, पुणे",
-      presenceComplete: "आपल्या उपस्थितीने आमचा आनंद द्विगुणीत होईल",
-      tapSeal: "उघडण्यासाठी शिक्क्यावर स्पर्श करा",
-      scrollDown: "खाली पहा",
-      saveLabel: "तारीख जतन करा",
-      addCalendar: "कॅलेंडरमध्ये जोडा",
-      viewMap: "नकाशावर पहा",
-      countHeading: "उत्सव सुरू होण्यास",
-      married: "कृतज्ञतेसह, विवाह उत्सव सुरू झाला आहे.",
-      foilHint: "येथे खरवडा",
-      days: "दिवस", hours: "तास", minutes: "मिनिटे", seconds: "सेकंद",
-      celLabel: "उत्सव सोहळा",
-      celTitle: "पवित्र विधी व उत्सव सोहळा",
-      celSub: "जिथे मराठी संस्कृती व मल्याळी परंपरांचा संगम होतो",
-      
-      // Events Section
-      eventHaldiTitle: "हळदी",
-      eventHaldiDate: "27 डिसेंबर 2026, दुपारी 2:00 वाजता",
-      eventHaldiVenue: "स्विमिंग पूल परिसर",
-      eventHaldiDress: "पिवळ्या रंगांच्या छटा",
-      eventHaldiAlt: "हळदी सोहळ्यात आयुषी आणि वैशाख, चित्र",
-
-      eventSangeetTitle: "संगीत",
-      eventSangeetDate: "27 डिसेंबर 2026, संध्याकाळी 7:00 वाजता",
-      eventSangeetVenue: "बँक्वेट हॉल (चौथा मजला)",
-      eventSangeetDress: "इंडो-वेस्टर्न ग्लॅम",
-      eventSangeetAlt: "संगीत संध्येत नृत्य करताना आयुषी आणि वैशाख, चित्र",
-
-      eventMalayaliTitle: "मल्याळी विवाह",
-      eventMalayaliDate: "28 डिसेंबर 2026, सकाळी 9:00 वाजता",
-      eventMalayaliVenue: "लॉन",
-      eventMalayaliDress: "पांढरा आणि सोनेरी पारंपारिक",
-      eventMalayaliAlt: "मल्याळी विवाह सोहळ्यात पारंपारिक कसव पोशाखात आयुषी आणि वैशाख, चित्र",
-
-      eventMarathiTitle: "मराठी विवाह",
-      eventMarathiDate: "28 डिसेंबर 2026, दुपारी 2:25 वाजता",
-      eventMarathiVenue: "लॉन",
-      eventMarathiDress: "पारंपारिक पोशाख",
-      eventMarathiAlt: "पारंपारिक महाराष्ट्रीयन विवाह पोशाखात आयुषी आणि वैशाख, चित्र",
-
-      labelDateTime: "तारीख आणि वेळ",
-      labelDateMuhurat: "तारीख आणि मुहूर्त वेळ",
-      labelVenue: "स्थळ",
-      labelDress: "पोशाख",
-      rsvpLabel: "उपस्थिती कळवा",
-      rsvpTitle: "आपल्या उपस्थितीचा आम्हांस मान आहे",
-      rsvpText: "आपल्या उपस्थितीची व आशीर्वादांची आम्ही विनम्रपणे विनंती करतो.",
-      nameLabel: "आपले नाव", namePlaceholder: "पूर्ण नाव",
-      attendLabel: "आपण उपस्थित राहाल का?",
-      accept: "आनंदाने स्वीकारतो", decline: "खेदपूर्वक नकार",
-      guestsLabel: "पाहुण्यांची संख्या",
-      noteLabel: "नवदांपत्यासाठी संदेश", notePlaceholder: "आपले आशीर्वाद व शुभेच्छा...",
-      whatsappBtn: "WhatsApp वर RSVP पाठवा",
-      rsvpNote: "कृपया ३० नोव्हेंबर २०२६ पर्यंत कळवा",
-      closingLove: "प्रेम व कृतज्ञतेसह,",
-      closingFams: "अनिता व लक्ष्मण गोडसे\nछाया व जगन्नाथ विश्वनाथ",
-      footerLine: "",
-      waIntro: "नमस्ते! आयुषी व वैशाख यांच्या लग्नासाठी (२७ व २८ डिसेंबर २०२६) मी RSVP करू इच्छितो.",
-      waAccept: "आनंदाने उपस्थित राहीन", waDecline: "खेदपूर्वक उपस्थित राहू शकणार नाही",
-      waGuests: "पाहुणे", waName: "नाव"
-    },
-    ml: {
-      togetherFamilies: "ഞങ്ങളുടെ കുടുംബങ്ങളുടെ അനുഗ്രഹത്തോടെ",
-      heroBlessing: "ഗണേശ ഭഗവാന്റെ അനുഗ്രഹത്തോടെ, രണ്ടു ഹൃദയങ്ങളുടെയും രണ്ടു കുടുംബങ്ങളുടെയും രണ്ടു മനോഹര പാരമ്പര്യങ്ങളുടെയും സംഗമം ഞങ്ങൾ ആഘോഷിക്കുന്നു!",
-      cordiallyInvite: "ഞങ്ങൾ നിങ്ങളെ സ്നേഹപൂർവ്വം ക്ഷണിക്കുന്നു",
-      weddingCeremony: "വിവാഹ മംഗള കർമ്മങ്ങളിലേക്ക്",
-      brideParents: "അനിതയുടെയും ലക്ഷ്മൺ ഗോഡ്സെയുടെയും പുത്രി",
-      groomParents: "ഛായയുടെയും ജഗന്നാഥ് വിശ്വനാഥിന്റെയും പുത്രൻ",
-      venueName: "കൃഷ്ണായി റിസോർട്ട് ബൈ ബ്രഹ്മ",
-      venueAddr: "സിംഹഗഡ് കോട്ടയ്ക്ക് സമീപം, ഡോണജെ, പൂനെ",
-      presenceComplete: "നിങ്ങളുടെ സാന്നിധ്യം ഞങ്ങളുടെ ആഘോഷത്തിന് പൂർണ്ണത നൽകും",
-      tapSeal: "തുറക്കാൻ മുദ്രയിൽ തൊടുക",
-      scrollDown: "താഴേക്ക്",
-      saveLabel: "തീയതി ഓർമ്മിക്കുക",
-      addCalendar: "കലണ്ടറിൽ ചേർക്കുക",
-      viewMap: "മാപ്പിൽ കാണുക",
-      countHeading: "ആഘോഷങ്ങൾ ആരംഭിക്കാൻ",
-      married: "നന്ദിയോടെ, ഞങ്ങൾ വിവാഹിതരായി.",
-      foilHint: "ഇവിടെ ചുരണ്ടുക",
-      days: "ദിവസം", hours: "മണിക്കൂർ", minutes: "മിനിറ്റ്", seconds: "സെക്കൻഡ്",
-      celLabel: "ആഘോഷങ്ങൾ",
-      celTitle: "പവിത്രമായ ചടങ്ങുകളും ആഘോഷങ്ങളും",
-      celSub: "മറാഠി പാരമ്പര്യവും മലയാളി സംസ്കാരവും ഒന്നാകുമ്പോൾ",
-      
-      // Events Section
-      eventHaldiTitle: "ഹൽദി",
-      eventHaldiDate: "27 ഡിസംബർ 2026, ഉച്ചയ്ക്ക് 2:00 മണിക്ക്",
-      eventHaldiVenue: "സ്വിമ്മിംഗ് പൂൾ പ്രദേശം",
-      eventHaldiDress: "മഞ്ഞ നിറത്തിന്റെ ഷേഡുകൾ",
-      eventHaldiAlt: "ഹൽദി ചടങ്ങിൽ ആയുഷിയും വൈശാഖും, ചിത്രീകരണം",
-
-      eventSangeetTitle: "സംഗീത്",
-      eventSangeetDate: "27 ഡിസംബർ 2026, വൈകുന്നേരം 7:00 മണിക്ക്",
-      eventSangeetVenue: "ബാങ്ക്വറ്റ് ഹാൾ (നാലാം നില)",
-      eventSangeetDress: "ഇൻഡോ-വെസ്റ്റേൺ ഗ്ലാം",
-      eventSangeetAlt: "സംഗീത് രാവിൽ നൃത്തം ചെയ്യുന്ന ആയുഷിയും വൈശാഖും, ചിത്രീകരണം",
-
-      eventMalayaliTitle: "മലയാളി വിവാഹം",
-      eventMalayaliDate: "28 ഡിസംബർ 2026, രാവിലെ 9:00 മണിക്ക്",
-      eventMalayaliVenue: "ലോൺ",
-      eventMalayaliDress: "വെള്ളയും സുവർണ്ണവുമായ പരമ്പരാഗത വസ്ത്രങ്ങൾ",
-      eventMalayaliAlt: "പരമ്പരാഗത കസവ് വേഷത്തിൽ ആയുഷിയും വൈശാഖും മലയാളി വിവാഹത്തിൽ, ചിത്രീകരണം",
-
-      eventMarathiTitle: "മറാത്തി വിവാഹം",
-      eventMarathiDate: "28 ഡിസംബർ 2026, ഉച്ചയ്ക്ക് 2:25 മണിക്ക്",
-      eventMarathiVenue: "ലോൺ",
-      eventMarathiDress: "പരമ്പരാഗത വസ്ത്രങ്ങൾ",
-      eventMarathiAlt: "പരമ്പരാഗത മറാത്തി വിവാഹ വേഷത്തിൽ ആയുഷിയും വൈശാഖും, ചിത്രീകരണം",
-
-      labelDateTime: "തീയതിയും സമയവും",
-      labelDateMuhurat: "തീയതിയും മുഹൂർത്ത സമയവും",
-      labelVenue: "വേദി",
-      labelDress: "വസ്ത്രധാരണം",
-      rsvpLabel: "സാന്നിധ്യം അറിയിക്കുക",
-      rsvpTitle: "നിങ്ങളുടെ സാന്നിധ്യം ഞങ്ങൾക്ക് ബഹുമതിയാണ്",
-      rsvpText: "നിങ്ങളുടെ സാന്നിധ്യവും അനുഗ്രഹങ്ങളും ഞങ്ങൾ അഭ്യർത്ഥിക്കുന്നു.",
-      nameLabel: "നിങ്ങളുടെ പേര്", namePlaceholder: "പൂർണ്ണ പേര്",
-      attendLabel: "നിങ്ങൾ പങ്കെടുക്കുമോ?",
-      accept: "സന്തോഷത്തോടെ സ്വീകരിക്കുന്നു", decline: "ഖേദപൂർവ്വം നിരസിക്കുന്നു",
-      guestsLabel: "അതിഥികളുടെ എണ്ണം",
-      noteLabel: "ദമ്പതികൾക്കുള്ള കുറിപ്പ്", notePlaceholder: "നിങ്ങളുടെ അനുഗ്രഹങ്ങളും ആശംസകളും...",
-      whatsappBtn: "WhatsApp-ൽ RSVP അയയ്ക്കുക",
-      rsvpNote: "2026 നവംബർ 30-നകം അറിയിക്കുക",
-      closingLove: "സ്നേഹത്തോടും നന്ദിയോടും കൂടി,",
-      closingFams: "അനിത & ലക്ഷ്മൺ ഗോഡ്സെ\nഛായ & ജഗന്നാഥ് വിശ്വനാഥ്",
-      footerLine: "",
-      waIntro: "നമസ്കാരം! ആയുഷിയുടെയും വൈശാഖിന്റെയും വിവാഹത്തിന് (27 & 28 ഡിസംബർ 2026) RSVP നൽകുന്നു.",
-      waAccept: "സന്തോഷത്തോടെ പങ്കെടുക്കും", waDecline: "ഖേദപൂർവ്വം പങ്കെടുക്കാൻ കഴിയില്ല",
-      waGuests: "അതിഥികൾ", waName: "പേര്"
-    }
+    labelDateTime: "Date & Time",
+    labelDateMuhurat: "Date & Muhurat Time",
+    labelVenue: "Venue",
+    labelDress: "Dress Code",
+    closingLove: "With love and gratitude,",
+    closingFams: "Anita & Laxman Godse\\nChaya & Jagannath Vishwanath",
+    footerLine: ""
   }
 };
 
@@ -2223,8 +1942,9 @@ const CONFIG = {
 const $ = s => document.querySelector(s);
 const $$ = s => Array.from(document.querySelectorAll(s));
 const REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-let currentLang = "en", confettiFired = false;
-const T = () => CONFIG.i18n[currentLang];
+CONFIG.i18n.en = CONFIG.i18n;
+let confettiFired = false;
+const T = () => CONFIG.i18n;
 if (window.gsap && window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
 
 const STD_SESSION_KEY = "av_std_timer_revealed_v2";
@@ -2240,9 +1960,9 @@ const EN_GROOM_HTML = '<img class="hero-name-img" src="assets/name-vaishakh.png"
 const EN_AMP_HTML = '<img class="hero-amp-img" src="assets/name-amp.png" alt="&amp;" width="55" height="50">';
 
 if ($("#heroBride")) $("#heroBride").innerHTML = EN_BRIDE_HTML;
-if ($("#heroBrideParents")) $("#heroBrideParents").textContent = CONFIG.parents.bride.en;
+if ($("#heroBrideParents")) $("#heroBrideParents").textContent = CONFIG.parents.bride;
 if ($("#heroGroom")) $("#heroGroom").innerHTML = EN_GROOM_HTML;
-if ($("#heroGroomParents")) $("#heroGroomParents").textContent = CONFIG.parents.groom.en;
+if ($("#heroGroomParents")) $("#heroGroomParents").textContent = CONFIG.parents.groom;
 if ($("#heroAmp")) $("#heroAmp").innerHTML = EN_AMP_HTML;
 $("#stdDateText").textContent = CONFIG.displayDate;
 $("#stdVenueText").textContent = CONFIG.venue;
@@ -2253,7 +1973,7 @@ $("#footCity").textContent = CONFIG.cityShort;
 /* ================= EVENT PICTURE LIGHTBOX ================= */
 let lastFocusedElement = null;
 function openLightbox(idx){
-  const ev = CONFIG.events[idx], dict = CONFIG.i18n[currentLang] || T();
+  const ev = CONFIG.events[idx], dict = CONFIG.i18n;
   if (!ev) return;
   lastFocusedElement = document.activeElement;
   const lbImg = $("#lbImg");
@@ -2287,8 +2007,8 @@ window.addEventListener("keydown", e => {
 });
 
 /* ================= LANGUAGE & RENDERING ================= */
-function renderEvents(lang = currentLang){
-  const dict = CONFIG.i18n[lang] || T();
+function renderEvents(){
+  const dict = CONFIG.i18n;
   $("#eventList").innerHTML = CONFIG.events.map((ev, i) => `
     <article class="event" data-event>
       <div class="royal-card event-card ${i % 2 === 1 ? 'event-card--reverse' : ''}">
@@ -2354,74 +2074,7 @@ function renderEvents(lang = currentLang){
   }
 }
 
-function applyLang(lang){
-  currentLang = lang;
-  const dict = CONFIG.i18n[lang];
-  $$("[data-i18n]").forEach(el => {
-    const k = el.getAttribute("data-i18n");
-    if (dict[k] !== undefined) el.textContent = dict[k];
-  });
-  $$("[data-i18n-ph]").forEach(el => {
-    const k = el.getAttribute("data-i18n-ph");
-    if (dict[k] !== undefined) el.placeholder = dict[k];
-  });
-
-  const names = {
-    en: {
-      brideHtml: EN_BRIDE_HTML,
-      groomHtml: EN_GROOM_HTML,
-      ampHtml: EN_AMP_HTML
-    },
-    mr: {
-      brideHtml: '<span class="gold-text gold-glow">आयुषी</span>',
-      groomHtml: '<span class="gold-text gold-glow">वैशाख</span>',
-      ampHtml: '<span class="gold-text gold-glow">&amp;</span>'
-    },
-    ml: {
-      brideHtml: '<span class="gold-text gold-glow">ആയുഷി</span>',
-      groomHtml: '<span class="gold-text gold-glow">വൈശാഖ്</span>',
-      ampHtml: '<span class="gold-text gold-glow">&amp;</span>'
-    }
-  };
-  if ($("#heroBride")) $("#heroBride").innerHTML = names[lang].brideHtml;
-  if ($("#heroGroom")) $("#heroGroom").innerHTML = names[lang].groomHtml;
-  if ($("#heroAmp")) $("#heroAmp").innerHTML = names[lang].ampHtml;
-  if ($("#heroBrideParents")) $("#heroBrideParents").textContent = dict.brideParents || CONFIG.parents.bride[lang];
-  if ($("#heroGroomParents")) $("#heroGroomParents").textContent = dict.groomParents || CONFIG.parents.groom[lang];
-
-  const famHtml = {
-    en: '<span class="closing-fam-line">Anita &amp; Laxman Godse</span><span class="closing-fam-line">Chaya &amp; Jagannath Vishwanath</span>',
-    mr: '<span class="closing-fam-line">अनिता व लक्ष्मण गोडसे</span><span class="closing-fam-line">छाया व जगन्नाथ विश्वनाथ</span>',
-    ml: '<span class="closing-fam-line">അനിത &amp; ലക്ഷ്മൺ ഗോഡ്സെ</span><span class="closing-fam-line">ഛായ &amp; ജഗന്നാഥ് വിശ്വനാഥ്</span>'
-  };
-  if ($("#closingFams")) $("#closingFams").innerHTML = famHtml[lang];
-
-  if (typeof redrawTimerFoil === "function") {
-    try { redrawTimerFoil(); } catch(e){}
-  }
-  renderEvents();
-}
-
-function setLang(lang){
-  if (!CONFIG.i18n[lang]) return;
-  currentLang = lang;
-  document.documentElement.lang = lang === "en" ? "en" : lang;
-  document.body.classList.toggle("lang-mr", lang === "mr");
-  document.body.classList.toggle("lang-ml", lang === "ml");
-  $$(".lang-switch button").forEach(b => b.classList.toggle("active", b.dataset.lang === lang));
-  const main = $("#mainContent");
-  main.classList.add("fading");
-  setTimeout(() => {
-    applyLang(lang);
-    main.classList.remove("fading");
-    if (window.ScrollTrigger) {
-      setTimeout(() => { try { ScrollTrigger.refresh(); } catch(e){} }, 80);
-    }
-  }, REDUCED ? 0 : 200);
-}
-
-$$(".lang-switch button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
-applyLang("en");
+renderEvents();
 
 /* ================= MUSIC ================= */
 // Playback Trimming Configuration
@@ -2798,7 +2451,7 @@ function tickCountdown(){
   const diff = cdTargetTime - Date.now();
   const heading = $("#stdCountdownHeading");
   if (diff <= 0){
-    if (heading) heading.textContent = T().married;
+    if (heading) heading.textContent = CONFIG.i18n.married;
     ["d", "h", "m", "s"].forEach(k => setTimerDigit(cdEls[k], k, 0));
     return;
   }
@@ -2884,16 +2537,12 @@ setInterval(tickCountdown, 1000);
     ctx.strokeRect(5, 5, w - 10, h - 10);
 
     // Hint text on the foil
-    const dict = T();
-    const hint = dict.foilHint || (currentLang === "mr" ? "येथे खरवडा" : currentLang === "ml" ? "ഇവിടെ ചുരണ്ടുക" : "Scratch here");
+    const hint = CONFIG.i18n.foilHint || "Scratch here";
     ctx.fillStyle = "rgba(107, 15, 26, 0.88)";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    const isIndic = currentLang === "mr" || currentLang === "ml";
-    ctx.font = isIndic
-      ? "600 12.5px " + (currentLang === "mr" ? "Noto Serif Devanagari" : "Noto Serif Malayalam") + ", serif"
-      : "600 11.5px Cinzel, serif";
-    try { if (!isIndic) ctx.letterSpacing = "2px"; } catch(e){}
+    ctx.font = "600 11.5px Cinzel, serif";
+    try { ctx.letterSpacing = "2px"; } catch(e){}
 
     ctx.fillText("✦  " + hint + "  ✦", w / 2, h / 2);
   }
