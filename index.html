@@ -2389,40 +2389,104 @@ function heroReveal(){
 const addCalBtn = $("#stdAddCalBtn");
 if (addCalBtn){
   addCalBtn.addEventListener("click", () => {
-    const fmt = d => d.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
-    const nowStr = fmt(new Date());
-    const vevents = CONFIG.events.map(ev => {
-      const s = new Date(ev.startISO);
-      const e = new Date(ev.endISO);
-      const title = CONFIG.i18n.en[ev.titleKey];
-      const venueArea = CONFIG.i18n.en[ev.venueKey];
-      const dress = CONFIG.i18n.en[ev.dressKey];
-      return [
-        "BEGIN:VEVENT",
-        "UID:av-" + ev.id + "-202612@aayushi-vaishakh",
-        "DTSTAMP:" + nowStr,
-        "DTSTART:" + fmt(s),
-        "DTEND:" + fmt(e),
-        "SUMMARY:" + title + " — Aayushi & Vaishakh Wedding",
-        "LOCATION:Krushnai Resort by Brahma\\, Donaje\\, Pune",
-        "DESCRIPTION:" + title + " (" + venueArea + "). Dress code: " + dress + ". Wedding celebrations of Aayushi and Vaishakh at Krushnai Resort by Brahma.",
-        "END:VEVENT"
-      ].join("\r\n");
-    }).join("\r\n");
+    const pad = n => String(n).padStart(2, "0");
+    const now = new Date();
+    const dtstamp = now.getUTCFullYear() +
+      pad(now.getUTCMonth() + 1) +
+      pad(now.getUTCDate()) + "T" +
+      pad(now.getUTCHours()) +
+      pad(now.getUTCMinutes()) +
+      pad(now.getUTCSeconds()) + "Z";
+
+    const calendarEvents = [
+      {
+        uid: "av-haldi-20261227@aayushi-vaishakh",
+        summary: "Haldi — Aayushi & Vaishakh Wedding",
+        dtstart: "20261227T140000",
+        dtend: "20261227T160000",
+        description: "Haldi ceremony of Aayushi and Vaishakh. Venue: Swimming pool area\\, Krushnai Resort by Brahma\\, Pune. Dress code: Shades of Yellow.",
+        location: "Krushnai Resort by Brahma\\, Near Sinhagad Fort\\, Donaje\\, Pune"
+      },
+      {
+        uid: "av-sangeet-20261227@aayushi-vaishakh",
+        summary: "Sangeet — Aayushi & Vaishakh Wedding",
+        dtstart: "20261227T190000",
+        dtend: "20261227T220000",
+        description: "Sangeet celebration of Aayushi and Vaishakh. Venue: Banquet hall (4th floor)\\, Krushnai Resort by Brahma\\, Pune. Dress code: Indo-Western Glam.",
+        location: "Krushnai Resort by Brahma\\, Near Sinhagad Fort\\, Donaje\\, Pune"
+      },
+      {
+        uid: "av-malayali-wedding-20261228@aayushi-vaishakh",
+        summary: "Malayali Wedding — Aayushi & Vaishakh Wedding",
+        dtstart: "20261228T090000",
+        dtend: "20261228T110000",
+        description: "Malayali Wedding ceremony of Aayushi and Vaishakh. Venue: Lawn\\, Krushnai Resort by Brahma\\, Pune. Dress code: White & Golden Traditionals.",
+        location: "Krushnai Resort by Brahma\\, Near Sinhagad Fort\\, Donaje\\, Pune"
+      },
+      {
+        uid: "av-lunch-20261228@aayushi-vaishakh",
+        summary: "Lunch — Aayushi & Vaishakh Wedding",
+        dtstart: "20261228T120000",
+        dtend: "20261228T140000",
+        description: "Wedding lunch celebration of Aayushi and Vaishakh at Krushnai Resort by Brahma\\, Pune.",
+        location: "Krushnai Resort by Brahma\\, Near Sinhagad Fort\\, Donaje\\, Pune"
+      },
+      {
+        uid: "av-marathi-wedding-20261228@aayushi-vaishakh",
+        summary: "Marathi Wedding — Aayushi & Vaishakh Wedding",
+        dtstart: "20261228T140000",
+        dtend: "20261228T160000",
+        description: "Marathi Wedding ceremony of Aayushi and Vaishakh. Venue: Lawn\\, Krushnai Resort by Brahma\\, Pune. Dress code: Traditionals.",
+        location: "Krushnai Resort by Brahma\\, Near Sinhagad Fort\\, Donaje\\, Pune"
+      }
+    ];
+
+    const vevents = calendarEvents.map(ev => [
+      "BEGIN:VEVENT",
+      "UID:" + ev.uid,
+      "DTSTAMP:" + dtstamp,
+      "DTSTART;TZID=Asia/Kolkata:" + ev.dtstart,
+      "DTEND;TZID=Asia/Kolkata:" + ev.dtend,
+      "SUMMARY:" + ev.summary,
+      "LOCATION:" + ev.location,
+      "DESCRIPTION:" + ev.description,
+      "STATUS:CONFIRMED",
+      "SEQUENCE:0",
+      "END:VEVENT"
+    ].join("\r\n")).join("\r\n");
 
     const ics = [
       "BEGIN:VCALENDAR",
       "VERSION:2.0",
-      "PRODID:-//AV Wedding//EN",
+      "PRODID:-//Aayushi & Vaishakh Wedding//EN",
+      "CALSCALE:GREGORIAN",
+      "METHOD:PUBLISH",
+      "X-WR-CALNAME:Aayushi & Vaishakh Wedding",
+      "X-WR-TIMEZONE:Asia/Kolkata",
+      "BEGIN:VTIMEZONE",
+      "TZID:Asia/Kolkata",
+      "X-LIC-LOCATION:Asia/Kolkata",
+      "BEGIN:STANDARD",
+      "TZOFFSETFROM:+0530",
+      "TZOFFSETTO:+0530",
+      "TZNAME:IST",
+      "DTSTART:19700101T000000",
+      "END:STANDARD",
+      "END:VTIMEZONE",
       vevents,
       "END:VCALENDAR"
     ].join("\r\n");
 
+    const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
     const a = document.createElement("a");
-    a.href = URL.createObjectURL(new Blob([ics], { type: "text/calendar" }));
+    a.href = URL.createObjectURL(blob);
     a.download = "Aayushi-Vaishakh-Wedding.ics";
+    document.body.appendChild(a);
     a.click();
-    setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+    setTimeout(() => {
+      document.body.removeChild(a);
+      URL.revokeObjectURL(a.href);
+    }, 2000);
   });
 }
 
